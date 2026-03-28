@@ -26,62 +26,59 @@ export default function Hero() {
     timer = setTimeout(() => {
       tl = gsap.timeline();
 
-      // 1. "Mooin!" — chars grow up gently from baseline
+      // 1. "Mooin!" — chars rise up softly
       if (greetingRef.current) {
         greetingRef.current.style.visibility = 'visible';
         const split = SplitText.create(greetingRef.current, { type: 'chars' });
         tl.from(split.chars, {
-          scaleY: 0,
-          transformOrigin: '50% 100%',
-          duration: 0.8,
-          stagger: 0.06,
-          ease: 'elastic.out(1, 0.5)',
+          y: 30,
+          opacity: 0,
+          duration: 0.6,
+          stagger: 0.08,
+          ease: 'power2.out',
         });
       }
 
-      // 2. Intro — clip-path line reveal (smooth wipe)
+      // 2. Intro — words appear one by one, gentle rise
       if (introRef.current) {
         introRef.current.style.visibility = 'visible';
-        const split = SplitText.create(introRef.current, {
-          type: 'lines',
-          linesClass: 'hero-line',
-        });
-        tl.from(split.lines, {
-          clipPath: 'inset(0 100% 0 0)',
-          duration: 1.0,
-          stagger: 0.2,
-          ease: 'power3.inOut',
-        }, '-=0.3');
+        const split = SplitText.create(introRef.current, { type: 'words' });
+        tl.from(split.words, {
+          y: 16,
+          opacity: 0,
+          duration: 0.5,
+          stagger: 0.04,
+          ease: 'power2.out',
+        }, '-=0.2');
       }
 
-      // 3. Illustration — gentle scale in
+      // 3. Illustration — soft fade in
       if (illustrationRef.current) {
         illustrationRef.current.style.visibility = 'visible';
         tl.fromTo(illustrationRef.current,
-          { scale: 0.3, opacity: 0, transformOrigin: '50% 100%' },
-          { scale: 1, opacity: 1, duration: 1.0, ease: 'back.out(1.2)', clearProps: 'transform,opacity' },
-          '-=0.8'
+          { opacity: 0, scale: 0.9, transformOrigin: '50% 50%' },
+          { opacity: 1, scale: 1, duration: 1.2, ease: 'power2.out', clearProps: 'transform,opacity' },
+          '-=1.0'
         );
       }
 
-      // 4. Subtitle — clip reveal
+      // 4. Subtitle — fade up
       if (ctaRef.current) {
         ctaRef.current.style.visibility = 'visible';
-        tl.fromTo(ctaRef.current,
-          { clipPath: 'inset(0 100% 0 0)' },
-          { clipPath: 'inset(0 0% 0 0)', duration: 0.8, ease: 'power3.inOut', clearProps: 'clipPath' },
-          '-=0.5'
-        );
+        tl.from(ctaRef.current, {
+          y: 12,
+          opacity: 0,
+          duration: 0.8,
+          ease: 'power2.out',
+        }, '-=0.6');
       }
 
-      // No animation on links — they're styled via CSS to stand out subtly
-
-      // 5. Arrow draw-on — smooth and slow
+      // 5. Arrow draw-on
       if (arrowPathRef.current) {
         const path = arrowPathRef.current;
         const length = path.getTotalLength();
         gsap.set(path, { strokeDasharray: length, strokeDashoffset: length });
-        tl.to(path, { strokeDashoffset: 0, duration: 1.5, ease: 'power2.inOut' }, '-=0.6');
+        tl.to(path, { strokeDashoffset: 0, duration: 1.5, ease: 'power2.inOut' }, '-=0.4');
       }
 
       if (arrowHeadRef.current) {

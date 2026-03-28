@@ -228,10 +228,6 @@ button {
   line-height: 1.7;
 }
 
-.hero-line {
-  overflow: hidden;
-}
-
 .hero-illustration {
   flex: 0 0 auto;
   max-width: 180px;
