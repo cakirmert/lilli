@@ -4,10 +4,9 @@ import { useEffect, useRef, useCallback } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { SplitText } from 'gsap/SplitText';
-import { ScrambleTextPlugin } from 'gsap/ScrambleTextPlugin';
 import { asset } from '@/lib/basePath';
 
-gsap.registerPlugin(ScrollTrigger, SplitText, ScrambleTextPlugin);
+gsap.registerPlugin(ScrollTrigger, SplitText);
 
 export default function Hero() {
   const sectionRef = useRef<HTMLElement>(null);
@@ -18,8 +17,6 @@ export default function Hero() {
   const arrowPathRef = useRef<SVGPathElement>(null);
   const arrowHeadRef = useRef<SVGPathElement>(null);
   const arrowSvgRef = useRef<SVGSVGElement>(null);
-  const link1Ref = useRef<HTMLAnchorElement>(null);
-  const link2Ref = useRef<HTMLAnchorElement>(null);
 
   useEffect(() => {
     let tl: gsap.core.Timeline;
@@ -77,23 +74,7 @@ export default function Hero() {
         );
       }
 
-      // Scramble link texts — slower, gentler reveal
-      const link1Text = link1Ref.current?.textContent || 'see some of my work';
-      const link2Text = link2Ref.current?.textContent || 'work on something meaningful';
-
-      if (link1Ref.current) {
-        tl.to(link1Ref.current, {
-          duration: 1.5,
-          scrambleText: { text: link1Text, chars: 'lowerCase', speed: 0.3, revealDelay: 0.5 },
-        }, '-=0.2');
-      }
-
-      if (link2Ref.current) {
-        tl.to(link2Ref.current, {
-          duration: 1.5,
-          scrambleText: { text: link2Text, chars: 'lowerCase', speed: 0.3, revealDelay: 0.5 },
-        }, '-=1.0');
-      }
+      // No animation on links — they're styled via CSS to stand out subtly
 
       // 5. Arrow draw-on — smooth and slow
       if (arrowPathRef.current) {
@@ -173,7 +154,6 @@ export default function Hero() {
             <p className="hero-subtitle">
               Let&apos;s{' '}
               <a
-                ref={link1Ref}
                 href="#work"
                 className="hero-inline-link"
                 onClick={(e) => scrollTo(e, '#work')}
@@ -183,7 +163,6 @@ export default function Hero() {
               </a>{' '}
               and{' '}
               <a
-                ref={link2Ref}
                 href="#about"
                 className="hero-inline-link"
                 onClick={(e) => scrollTo(e, '#about')}

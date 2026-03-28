@@ -231,15 +231,13 @@ button {
 }
 
 .hero-inline-link {
-  color: inherit;
+  color: #4a4a6a;
   text-decoration: none;
-  border-bottom: 1px solid transparent;
-  transition: border-color 0.3s ease, color 0.3s ease;
+  transition: color 0.3s ease;
 }
 
 .hero-inline-link:hover {
   color: var(--color-blue);
-  border-bottom-color: var(--color-blue);
 }
 
 .hero-loop-arrow {
