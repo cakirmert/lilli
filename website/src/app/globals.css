@@ -83,7 +83,7 @@ button {
   justify-content: space-between;
   align-items: center;
   pointer-events: none;
-  transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94), background 0.3s ease, backdrop-filter 0.3s ease;
 }
 
 .main-nav > * {
@@ -92,6 +92,12 @@ button {
 
 .nav-hidden {
   transform: translateY(-100%);
+}
+
+.nav-scrolled {
+  background: rgba(237, 236, 232, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
 }
 
 .nav-logo {
