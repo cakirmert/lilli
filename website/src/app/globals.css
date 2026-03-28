@@ -215,6 +215,25 @@ button {
   line-height: 1.7;
 }
 
+.hero-word {
+  display: inline-block;
+  will-change: transform, opacity;
+}
+
+.hero-link-word {
+  background-image: linear-gradient(
+    to right,
+    rgba(59, 59, 249, 0.1),
+    rgba(59, 59, 249, 0.08)
+  );
+  background-size: 0% 100%;
+  background-repeat: no-repeat;
+  background-position: 0 0;
+  border-radius: 3px;
+  padding: 1px 2px;
+  margin: -1px -2px;
+}
+
 .hero-illustration {
   flex: 0 0 auto;
   max-width: 180px;
@@ -240,6 +259,10 @@ button {
 .hero-inline-link:hover {
   color: var(--color-blue);
   background-size: 100% 2px;
+}
+
+.hero-inline-link:hover .hero-link-word {
+  background-size: 100% 100%;
 }
 
 .hero-loop-arrow {
