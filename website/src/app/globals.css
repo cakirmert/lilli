@@ -95,12 +95,14 @@ button {
 }
 
 .nav-logo {
-  font-family: var(--font-handwritten);
-  font-size: clamp(1.6rem, 3vw, 2.6rem);
-  font-weight: 700;
-  color: var(--color-blue);
   cursor: pointer;
-  line-height: 1;
+  display: flex;
+  align-items: center;
+}
+
+.nav-logo-img {
+  height: clamp(28px, 4vw, 44px);
+  width: auto;
 }
 
 .nav-links-desktop {

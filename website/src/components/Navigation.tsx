@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from 'react';
 import gsap from 'gsap';
+import { asset } from '@/lib/basePath';
 
 export default function Navigation() {
   const navRef = useRef<HTMLElement>(null);
@@ -66,7 +67,7 @@ export default function Navigation() {
       style={{ opacity: 0 }}
     >
       <a href="#" onClick={(e) => handleClick(e, '#')} className="nav-logo">
-        Lilli Schr&ouml;der
+        <img src={asset('/logo.svg')} alt="Lilli Schröder" className="nav-logo-img" />
       </a>
 
       {/* Desktop links */}
