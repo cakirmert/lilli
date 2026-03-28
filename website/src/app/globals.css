@@ -151,10 +151,22 @@ button {
   max-width: 180px;
 }
 
+.hero-inline-link {
+  color: var(--color-blue);
+  text-decoration: none;
+  border-bottom: 1.5px solid transparent;
+  transition: border-color 0.3s ease;
+}
+
+.hero-inline-link:hover {
+  border-bottom-color: var(--color-blue);
+}
+
 .hero-arrow {
   position: absolute;
   bottom: 24px;
   left: var(--padding-page);
+  cursor: pointer;
 }
 
 /* ===== PROJECTS ===== */
@@ -628,6 +640,56 @@ button {
     font-size: 1.05rem;
     max-width: 550px;
   }
+}
+
+/* ===== LEGAL PAGES ===== */
+.legal-page {
+  min-height: 100vh;
+  background: var(--color-bg);
+}
+
+.legal-nav {
+  padding: 16px var(--padding-page);
+}
+
+.legal-content {
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 40px var(--padding-page) 80px;
+}
+
+.legal-content h1 {
+  font-family: var(--font-handwritten);
+  font-size: clamp(1.8rem, 3vw, 2.4rem);
+  font-weight: 600;
+  color: var(--color-blue);
+  margin-bottom: 32px;
+}
+
+.legal-content h2 {
+  font-family: var(--font-body);
+  font-size: clamp(1rem, 1.5vw, 1.2rem);
+  font-weight: 600;
+  color: var(--color-text);
+  margin-top: 28px;
+  margin-bottom: 8px;
+}
+
+.legal-content h3 {
+  font-family: var(--font-body);
+  font-size: clamp(0.9rem, 1.2vw, 1rem);
+  font-weight: 600;
+  color: var(--color-text);
+  margin-top: 16px;
+  margin-bottom: 4px;
+}
+
+.legal-content p {
+  font-family: var(--font-body);
+  font-size: clamp(0.85rem, 1vw, 0.95rem);
+  line-height: 1.7;
+  color: var(--color-text-muted);
+  margin-bottom: 12px;
 }
 
 @media (prefers-reduced-motion: reduce) {

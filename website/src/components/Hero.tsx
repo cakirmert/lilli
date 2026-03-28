@@ -7,7 +7,7 @@ import { asset } from '@/lib/basePath';
 export default function Hero() {
   const greetingRef = useRef<HTMLHeadingElement>(null);
   const textRef = useRef<HTMLParagraphElement>(null);
-  const subtitleRef = useRef<HTMLParagraphElement>(null);
+  const linkRef = useRef<HTMLAnchorElement>(null);
   const illustrationRef = useRef<HTMLDivElement>(null);
   const arrowRef = useRef<HTMLDivElement>(null);
 
@@ -15,10 +15,29 @@ export default function Hero() {
     const tl = gsap.timeline({ delay: 0.5 });
     tl.fromTo(greetingRef.current, { opacity: 0, y: 40 }, { opacity: 1, y: 0, duration: 0.8, ease: 'power3.out' })
       .fromTo(textRef.current, { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.8, ease: 'power3.out' }, '-=0.4')
-      .fromTo(subtitleRef.current, { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.6, ease: 'power3.out' }, '-=0.3')
       .fromTo(illustrationRef.current, { opacity: 0, scale: 0.9 }, { opacity: 1, scale: 1, duration: 1, ease: 'power3.out' }, '-=0.6')
+      .fromTo(linkRef.current, { opacity: 0, y: 15 }, { opacity: 1, y: 0, duration: 0.6, ease: 'power3.out' }, '-=0.4')
       .fromTo(arrowRef.current, { opacity: 0 }, { opacity: 1, duration: 0.8, ease: 'power2.out' }, '-=0.3');
+
+    // Bouncing arrow
+    if (arrowRef.current) {
+      gsap.to(arrowRef.current, {
+        y: 8,
+        duration: 1.2,
+        ease: 'power1.inOut',
+        repeat: -1,
+        yoyo: true,
+      });
+    }
   }, []);
+
+  const scrollTo = (e: React.MouseEvent, selector: string) => {
+    e.preventDefault();
+    const target = document.querySelector(selector);
+    if (target) {
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  };
 
   return (
     <section className="hero-section">
@@ -28,9 +47,16 @@ export default function Hero() {
           <p ref={textRef} className="hero-intro" style={{ opacity: 0 }}>
             I&apos;m Lilli and passionate about visual storytelling and vibrant illustrations.
           </p>
-          <p ref={subtitleRef} className="hero-subtitle" style={{ opacity: 0 }}>
-            Let&apos;s see some of my projects and<br />
-            work on something meaningful together!
+          <p ref={linkRef} className="hero-subtitle" style={{ opacity: 0 }}>
+            Let&apos;s{' '}
+            <a href="#work" className="hero-inline-link" onClick={(e) => scrollTo(e, '#work')}>
+              see some of my work
+            </a>{' '}
+            and{' '}
+            <a href="#about" className="hero-inline-link" onClick={(e) => scrollTo(e, '#about')}>
+              work on something meaningful
+            </a>{' '}
+            together!
           </p>
         </div>
         <div ref={illustrationRef} className="hero-illustration" style={{ opacity: 0 }}>
