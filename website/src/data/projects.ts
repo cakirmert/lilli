@@ -76,7 +76,6 @@ export const projects: Project[] = [
     "category": "Design",
     "description": "A research project exploring the cultural significance of lucky charms and talismans across different traditions, documented through careful visual cataloguing and design.",
     "images": [
-      "/projects/luckycharm-research/01-cover.jpg",
       "/projects/luckycharm-research/02-detail.jpg"
     ]
   },
@@ -87,7 +86,7 @@ export const projects: Project[] = [
     "category": "Illustration",
     "description": "An expressive typographic poster exploring the concept of guilty pleasures through hand-lettering and energetic visual rhythm.",
     "images": [
-      "/projects/poster-for-exhibition/01-poster.png"
+      "/projects/poster-for-exhibition/01-poster.jpg"
     ]
   },
   {

@@ -1,0 +1,20 @@
+{
+  "permissions": {
+    "allow": [
+      "mcp__Claude_Preview__preview_start",
+      "Bash(ls -t ~/Downloads/*.png ~/Downloads/*.zip)",
+      "Bash(mkdir -p /tmp/figma-exports)",
+      "Read(//tmp/**)",
+      "Bash(for f:*)",
+      "Bash(do unzip:*)",
+      "Bash(done)",
+      "Bash(ls -t ~/Downloads/*.png)",
+      "Bash(ls ~/Downloads/image 7* ~/Downloads/IMG_4406* ~/Downloads/Weihnachtskarte*)",
+      "Bash(ls ~/Downloads/image*)",
+      "Bash(DEST=\"D:/lilli/website/public/projects\")",
+      "Bash(rm -f \"$DEST/leporello.jpg\")",
+      "Read(//d/lilli/website/**)",
+      "Bash(ls -t ~/Downloads/\"Portfolio Draft \\(9\\)\"* ~/Downloads/\"image 7\"*)"
+    ]
+  }
+}
