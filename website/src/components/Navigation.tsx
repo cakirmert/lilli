@@ -8,7 +8,6 @@ export default function Navigation() {
   const menuRef = useRef<HTMLDivElement>(null);
   const [menuOpen, setMenuOpen] = useState(false);
   const [hidden, setHidden] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
   const lastScrollY = useRef(0);
 
   useEffect(() => {
@@ -20,7 +19,6 @@ export default function Navigation() {
 
     const handleScroll = () => {
       const currentY = window.scrollY;
-      setScrolled(currentY > 50);
       // Hide nav when scrolling down past 100px, show when scrolling up
       if (currentY > 100 && currentY > lastScrollY.current) {
         setHidden(true);
@@ -64,7 +62,7 @@ export default function Navigation() {
   return (
     <nav
       ref={navRef}
-      className={`main-nav${hidden ? ' nav-hidden' : ''}${scrolled ? ' nav-scrolled' : ''}`}
+      className={`main-nav${hidden ? ' nav-hidden' : ''}`}
       style={{ opacity: 0 }}
     >
       <a href="#" onClick={(e) => handleClick(e, '#')} className="nav-logo">
