@@ -7,7 +7,7 @@ import { asset } from '@/lib/basePath';
 export default function Hero() {
   const greetingRef = useRef<HTMLHeadingElement>(null);
   const textRef = useRef<HTMLParagraphElement>(null);
-  const linkRef = useRef<HTMLAnchorElement>(null);
+  const linkRef = useRef<HTMLParagraphElement>(null);
   const illustrationRef = useRef<HTMLDivElement>(null);
   const arrowRef = useRef<HTMLDivElement>(null);
 
