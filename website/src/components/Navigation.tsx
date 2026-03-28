@@ -1,11 +1,12 @@
 'use client';
 
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState, useCallback } from 'react';
 import gsap from 'gsap';
 
 export default function Navigation() {
   const navRef = useRef<HTMLElement>(null);
   const menuRef = useRef<HTMLDivElement>(null);
+  const linkRefs = useRef<(HTMLAnchorElement | null)[]>([]);
   const [menuOpen, setMenuOpen] = useState(false);
   const [hidden, setHidden] = useState(false);
   const lastScrollY = useRef(0);
@@ -19,7 +20,6 @@ export default function Navigation() {
 
     const handleScroll = () => {
       const currentY = window.scrollY;
-      // Hide nav when scrolling down past 100px, show when scrolling up
       if (currentY > 100 && currentY > lastScrollY.current) {
         setHidden(true);
         setMenuOpen(false);
@@ -32,12 +32,11 @@ export default function Navigation() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Animate mobile menu
+  // Mobile menu animation
   useEffect(() => {
     if (!menuRef.current) return;
     if (menuOpen) {
-      gsap.fromTo(
-        menuRef.current,
+      gsap.fromTo(menuRef.current,
         { height: 0, opacity: 0 },
         { height: 'auto', opacity: 1, duration: 0.4, ease: 'power3.out' }
       );
@@ -45,6 +44,29 @@ export default function Navigation() {
       gsap.to(menuRef.current, { height: 0, opacity: 0, duration: 0.3, ease: 'power3.in' });
     }
   }, [menuOpen]);
+
+  // Magnetic hover effect for desktop nav links
+  const handleLinkMouseMove = useCallback((e: React.MouseEvent<HTMLAnchorElement>) => {
+    const link = e.currentTarget;
+    const rect = link.getBoundingClientRect();
+    const x = e.clientX - rect.left - rect.width / 2;
+    const y = e.clientY - rect.top - rect.height / 2;
+    gsap.to(link, {
+      x: x * 0.3,
+      y: y * 0.3,
+      duration: 0.3,
+      ease: 'power2.out',
+    });
+  }, []);
+
+  const handleLinkMouseLeave = useCallback((e: React.MouseEvent<HTMLAnchorElement>) => {
+    gsap.to(e.currentTarget, {
+      x: 0,
+      y: 0,
+      duration: 0.5,
+      ease: 'elastic.out(1, 0.4)',
+    });
+  }, []);
 
   const handleClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
     e.preventDefault();
@@ -66,13 +88,29 @@ export default function Navigation() {
       style={{ opacity: 0 }}
     >
       <a href="#" onClick={(e) => handleClick(e, '#')} className="nav-logo">
-        Lilli Schr&ouml;der
+        <span className="nav-logo-text">Lilli Schr&ouml;der</span>
+        <span className="nav-logo-dot" />
       </a>
 
       {/* Desktop links */}
       <div className="nav-links-desktop">
-        <a href="#about" onClick={(e) => handleClick(e, '#about')} className="nav-link">About</a>
-        <a href="#about" onClick={(e) => handleClick(e, '#about')} className="nav-link">Contact</a>
+        {[
+          { href: '#work', label: 'Work' },
+          { href: '#about', label: 'About' },
+          { href: '#about', label: 'Contact' },
+        ].map((item, i) => (
+          <a
+            key={item.label}
+            ref={(el) => { linkRefs.current[i] = el; }}
+            href={item.href}
+            onClick={(e) => handleClick(e, item.href)}
+            className="nav-link"
+            onMouseMove={handleLinkMouseMove}
+            onMouseLeave={handleLinkMouseLeave}
+          >
+            <span className="nav-link-label">{item.label}</span>
+          </a>
+        ))}
       </div>
 
       {/* Mobile hamburger */}
@@ -81,7 +119,6 @@ export default function Navigation() {
         onClick={() => setMenuOpen(!menuOpen)}
         aria-label="Toggle menu"
       >
-        <span />
         <span />
         <span />
       </button>
