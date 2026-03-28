@@ -3,89 +3,135 @@
 import { useEffect, useRef, useCallback } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { SplitText } from 'gsap/SplitText';
+import { ScrambleTextPlugin } from 'gsap/ScrambleTextPlugin';
 import { asset } from '@/lib/basePath';
 
-gsap.registerPlugin(ScrollTrigger);
+gsap.registerPlugin(ScrollTrigger, SplitText, ScrambleTextPlugin);
 
 export default function Hero() {
+  const sectionRef = useRef<HTMLElement>(null);
   const greetingRef = useRef<HTMLHeadingElement>(null);
-  const textRef = useRef<HTMLParagraphElement>(null);
+  const introRef = useRef<HTMLParagraphElement>(null);
   const ctaRef = useRef<HTMLDivElement>(null);
   const illustrationRef = useRef<HTMLDivElement>(null);
   const arrowPathRef = useRef<SVGPathElement>(null);
   const arrowHeadRef = useRef<SVGPathElement>(null);
   const arrowSvgRef = useRef<SVGSVGElement>(null);
-  const subtitleRef = useRef<HTMLParagraphElement>(null);
+  const link1Ref = useRef<HTMLAnchorElement>(null);
+  const link2Ref = useRef<HTMLAnchorElement>(null);
 
   useEffect(() => {
-    const tl = gsap.timeline({ delay: 0.5 });
+    let tl: gsap.core.Timeline;
+    let st: ScrollTrigger | undefined;
+    let timer: ReturnType<typeof setTimeout>;
 
-    // Animate greeting
-    tl.fromTo(greetingRef.current, { opacity: 0, y: 40 }, { opacity: 1, y: 0, duration: 0.8, ease: 'power3.out' })
-      .fromTo(textRef.current, { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.8, ease: 'power3.out' }, '-=0.4')
-      .fromTo(illustrationRef.current, { opacity: 0, scale: 0.9 }, { opacity: 1, scale: 1, duration: 1, ease: 'power3.out' }, '-=0.6');
+    timer = setTimeout(() => {
+      tl = gsap.timeline();
 
-    // Fade in CTA wrapper first
-    tl.fromTo(ctaRef.current, { opacity: 0 }, { opacity: 1, duration: 0.3 }, '-=0.4');
+      // 1. "Mooin!" — chars grow up gently from baseline
+      if (greetingRef.current) {
+        greetingRef.current.style.visibility = 'visible';
+        const split = SplitText.create(greetingRef.current, { type: 'chars' });
+        tl.from(split.chars, {
+          scaleY: 0,
+          transformOrigin: '50% 100%',
+          duration: 0.8,
+          stagger: 0.06,
+          ease: 'elastic.out(1, 0.5)',
+        });
+      }
 
-    // Word-by-word animation for the subtitle
-    if (subtitleRef.current) {
-      const words = subtitleRef.current.querySelectorAll('.hero-word');
-      const linkWords = subtitleRef.current.querySelectorAll('.hero-link-word');
+      // 2. Intro — clip-path line reveal (smooth wipe)
+      if (introRef.current) {
+        introRef.current.style.visibility = 'visible';
+        const split = SplitText.create(introRef.current, {
+          type: 'lines',
+          linesClass: 'hero-line',
+        });
+        tl.from(split.lines, {
+          clipPath: 'inset(0 100% 0 0)',
+          duration: 1.0,
+          stagger: 0.2,
+          ease: 'power3.inOut',
+        }, '-=0.3');
+      }
 
-      // Set initial state for all words
-      gsap.set(words, { opacity: 0, y: 20 });
+      // 3. Illustration — gentle scale in
+      if (illustrationRef.current) {
+        illustrationRef.current.style.visibility = 'visible';
+        tl.fromTo(illustrationRef.current,
+          { scale: 0.3, opacity: 0, transformOrigin: '50% 100%' },
+          { scale: 1, opacity: 1, duration: 1.0, ease: 'back.out(1.2)', clearProps: 'transform,opacity' },
+          '-=0.8'
+        );
+      }
 
-      // Animate words one by one
-      tl.to(words, {
-        opacity: 1,
-        y: 0,
-        duration: 0.4,
-        stagger: 0.06,
-        ease: 'power3.out',
-      }, '-=0.1');
+      // 4. Subtitle — clip reveal
+      if (ctaRef.current) {
+        ctaRef.current.style.visibility = 'visible';
+        tl.fromTo(ctaRef.current,
+          { clipPath: 'inset(0 100% 0 0)' },
+          { clipPath: 'inset(0 0% 0 0)', duration: 0.8, ease: 'power3.inOut', clearProps: 'clipPath' },
+          '-=0.5'
+        );
+      }
 
-      // After all words appear, give link words a special highlight pulse
-      tl.fromTo(linkWords, {
-        backgroundSize: '0% 100%',
-      }, {
-        backgroundSize: '100% 100%',
-        duration: 0.6,
-        stagger: 0.03,
-        ease: 'power2.out',
-      }, '+=0.2');
-    }
+      // Scramble link texts — slower, gentler reveal
+      const link1Text = link1Ref.current?.textContent || 'see some of my work';
+      const link2Text = link2Ref.current?.textContent || 'work on something meaningful';
 
-    // Draw the arrow path after text animation
-    if (arrowPathRef.current) {
-      const path = arrowPathRef.current;
-      const length = path.getTotalLength();
-      gsap.set(path, { strokeDasharray: length, strokeDashoffset: length });
-      tl.to(path, { strokeDashoffset: 0, duration: 1.2, ease: 'power2.inOut' }, '-=0.4');
-    }
+      if (link1Ref.current) {
+        tl.to(link1Ref.current, {
+          duration: 1.5,
+          scrambleText: { text: link1Text, chars: 'lowerCase', speed: 0.3, revealDelay: 0.5 },
+        }, '-=0.2');
+      }
 
-    // Fade in arrowhead
-    if (arrowHeadRef.current) {
-      gsap.set(arrowHeadRef.current, { opacity: 0 });
-      tl.to(arrowHeadRef.current, { opacity: 1, duration: 0.3, ease: 'power2.out' }, '-=0.1');
-    }
+      if (link2Ref.current) {
+        tl.to(link2Ref.current, {
+          duration: 1.5,
+          scrambleText: { text: link2Text, chars: 'lowerCase', speed: 0.3, revealDelay: 0.5 },
+        }, '-=1.0');
+      }
 
-    // ScrollTrigger: parallax on the illustration
-    if (illustrationRef.current) {
-      gsap.to(illustrationRef.current, {
-        y: -40,
-        ease: 'none',
-        scrollTrigger: {
-          trigger: illustrationRef.current,
-          start: 'top bottom',
+      // 5. Arrow draw-on — smooth and slow
+      if (arrowPathRef.current) {
+        const path = arrowPathRef.current;
+        const length = path.getTotalLength();
+        gsap.set(path, { strokeDasharray: length, strokeDashoffset: length });
+        tl.to(path, { strokeDashoffset: 0, duration: 1.5, ease: 'power2.inOut' }, '-=0.6');
+      }
+
+      if (arrowHeadRef.current) {
+        gsap.set(arrowHeadRef.current, { opacity: 0 });
+        tl.to(arrowHeadRef.current, { opacity: 1, duration: 0.3 }, '-=0.1');
+      }
+
+      // ScrollTrigger: parallax on illustration
+      if (illustrationRef.current) {
+        st = ScrollTrigger.create({
+          trigger: sectionRef.current,
+          start: 'top top',
           end: 'bottom top',
           scrub: 1,
-        },
-      });
-    }
+          animation: gsap.to(illustrationRef.current, { y: -60, ease: 'none' }),
+        });
+      }
+    }, 100);
 
     return () => {
-      ScrollTrigger.getAll().forEach(st => st.kill());
+      clearTimeout(timer);
+      if (tl) tl.kill();
+      if (st) st.kill();
+      // Reset inline styles on cleanup so re-run works
+      [greetingRef, introRef, ctaRef, illustrationRef].forEach(ref => {
+        if (ref.current) {
+          ref.current.style.visibility = 'hidden';
+          ref.current.style.transform = '';
+          ref.current.style.clipPath = '';
+        }
+      });
     };
   }, []);
 
@@ -113,49 +159,39 @@ export default function Hero() {
     }
   };
 
-  // Helper to wrap text into word spans
-  const wordSpan = (text: string, isLink: boolean = false) => {
-    return text.split(' ').map((word, i) => (
-      <span
-        key={i}
-        className={`hero-word${isLink ? ' hero-link-word' : ''}`}
-        style={{ opacity: 0 }}
-      >
-        {word}
-        {' '}
-      </span>
-    ));
-  };
-
   return (
-    <section className="hero-section">
+    <section ref={sectionRef} className="hero-section">
       <div className="hero-content">
         <div className="hero-text">
-          <h1 ref={greetingRef} className="hero-greeting" style={{ opacity: 0 }}>Mooin!</h1>
-          <p ref={textRef} className="hero-intro" style={{ opacity: 0 }}>
+          <h1 ref={greetingRef} className="hero-greeting" style={{ visibility: 'hidden' }}>
+            Mooin!
+          </h1>
+          <p ref={introRef} className="hero-intro" style={{ visibility: 'hidden' }}>
             I&apos;m Lilli and passionate about visual storytelling and vibrant illustrations.
           </p>
-          <div ref={ctaRef} className="hero-cta-wrap" style={{ opacity: 0 }}>
-            <p ref={subtitleRef} className="hero-subtitle">
-              {wordSpan("Let's")}
+          <div ref={ctaRef} className="hero-cta-wrap" style={{ visibility: 'hidden' }}>
+            <p className="hero-subtitle">
+              Let&apos;s{' '}
               <a
+                ref={link1Ref}
                 href="#work"
                 className="hero-inline-link"
                 onClick={(e) => scrollTo(e, '#work')}
                 onMouseEnter={wiggleArrow}
               >
-                {wordSpan('see some of my work', true)}
-              </a>
-              {wordSpan('and')}
+                see some of my work
+              </a>{' '}
+              and{' '}
               <a
+                ref={link2Ref}
                 href="#about"
                 className="hero-inline-link"
                 onClick={(e) => scrollTo(e, '#about')}
                 onMouseEnter={wiggleArrow}
               >
-                {wordSpan('work on something meaningful', true)}
-              </a>
-              {wordSpan('together!')}
+                work on something meaningful
+              </a>{' '}
+              together!
             </p>
             <svg
               ref={arrowSvgRef}
@@ -185,14 +221,11 @@ export default function Hero() {
             </svg>
           </div>
         </div>
-        <div ref={illustrationRef} className="hero-illustration" style={{ opacity: 0 }}>
+        <div ref={illustrationRef} className="hero-illustration" style={{ visibility: 'hidden' }}>
           <img
             src={asset('/hero-illustration.svg')}
             alt="Hand-drawn illustration of Lilli"
-            style={{
-              width: '100%',
-              height: 'auto',
-            }}
+            style={{ width: '100%', height: 'auto' }}
           />
         </div>
       </div>
