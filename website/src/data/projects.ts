@@ -41,8 +41,7 @@ export const projects: Project[] = [
     "category": "Design",
     "description": "A poster series exploring the imaginative connections between cloud formations and everyday objects, combining photography with typographic play.",
     "images": [
-      "/projects/cloud-associations/01-cover.jpg",
-      "/projects/cloud-associations/02-detail.jpg"
+      "/projects/cloud-associations/01-cover.jpg"
     ]
   },
   {
