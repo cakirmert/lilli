@@ -142,7 +142,7 @@ export default function Hero() {
       <div className="hero-content">
         <div className="hero-text">
           <h1 ref={greetingRef} className="hero-greeting" style={{ visibility: 'hidden' }}>
-            Mooin!
+            Hi there!
           </h1>
           <p ref={introRef} className="hero-intro" style={{ visibility: 'hidden' }}>
             I&apos;m Lilli and passionate about visual storytelling and vibrant illustrations.
@@ -157,17 +157,7 @@ export default function Hero() {
                 onMouseEnter={wiggleArrow}
               >
                 see some of my work
-              </a>{' '}
-              and{' '}
-              <a
-                href="#about"
-                className="hero-inline-link"
-                onClick={(e) => scrollTo(e, '#about')}
-                onMouseEnter={wiggleArrow}
-              >
-                work on something meaningful
-              </a>{' '}
-              together!
+              </a>.
             </p>
             <svg
               ref={arrowSvgRef}

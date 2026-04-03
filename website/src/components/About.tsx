@@ -38,13 +38,10 @@ export default function About() {
         </div>
         <div className="about-text">
           <h2 className="about-heading">
-            Lilli is a graphic designer and illustrator based in Hamburg with a passion for analogue techniques and visual storytelling.
+            Graphic designer and illustrator based in Hamburg with a passion for analogue techniques and visual storytelling.
           </h2>
-          <p className="about-bio">
-            Through an intuitive and experimental approach, she embraces chance and imperfection to create unexpected visual narratives. As an illustrator, she approaches the world with curiosity and care, bringing personal and socially relevant themes to the page. Her process is rooted in observation, empathy, and a playful approach to visual form.
-          </p>
           <div className="about-contact">
-            <h3 className="about-say-hi">Say hi!</h3>
+            <h3 className="about-say-hi">Let&apos;s work together</h3>
             <a href="mailto:hello@lilli-schroeder.de" className="about-email">
               hello@lilli-schroeder.de
             </a>
@@ -61,7 +58,7 @@ export default function About() {
               </a>
               <a href="https://www.behance.net/lillischrder" target="_blank" rel="noopener noreferrer" aria-label="Behance">
                 <svg viewBox="0 0 24 24" width="28" height="28" fill="currentColor">
-                  <path d="M6.938 4.503c.702 0 1.34.06 1.92.188.577.13 1.07.33 1.485.609.41.28.733.65.96 1.12.225.47.34 1.05.34 1.73 0 .74-.17 1.36-.507 1.86-.338.5-.837.9-1.502 1.22.906.26 1.576.72 2.022 1.37.448.66.665 1.45.665 2.36 0 .75-.13 1.39-.41 1.93-.28.55-.67 1-1.16 1.35-.48.348-1.05.6-1.67.767-.62.16-1.26.25-1.92.25H0v-15.03h6.938zm-.36 6.17c.64 0 1.17-.15 1.58-.46.41-.31.615-.79.615-1.43 0-.37-.07-.67-.21-.9a1.49 1.49 0 00-.56-.56 2.21 2.21 0 00-.79-.27 4.3 4.3 0 00-.94-.09H3.19v3.71h3.39zm.19 6.46c.36 0 .7-.04 1.02-.11.32-.08.6-.21.84-.39s.43-.42.57-.72c.13-.29.2-.67.2-1.12 0-.88-.25-1.52-.74-1.92-.49-.39-1.14-.59-1.95-.59H3.19v4.85h3.58zM21.054 18.15c.535-.66.806-1.52.806-2.58h-6.79c0 .42.06.82.19 1.18.13.36.33.67.59.93.26.26.58.46.94.61.36.15.78.22 1.24.22.65 0 1.18-.15 1.6-.46.42-.31.72-.68.9-1.1h2.76c-.45 1.28-1.15 2.24-2.1 2.87-.95.63-2.1.95-3.45.95-.93 0-1.78-.16-2.54-.48a5.56 5.56 0 01-1.93-1.36 6.07 6.07 0 01-1.22-2.1c-.28-.82-.43-1.72-.43-2.7 0-.94.14-1.82.43-2.63a6.08 6.08 0 011.24-2.12 5.76 5.76 0 011.95-1.42 6.08 6.08 0 012.55-.52c1.01 0 1.91.19 2.69.58.78.39 1.44.92 1.96 1.58.52.67.9 1.44 1.15 2.33.24.88.33 1.82.27 2.81h-8.56c0 1.07.27 1.93.81 2.59zM20.3 11.27c-.41-.55-1.04-.83-1.88-.83-.55 0-1.01.09-1.37.29-.36.19-.65.43-.87.72-.22.28-.37.59-.47.92-.09.33-.15.63-.17.92h5.39c-.12-.87-.42-1.56-.83-2.02h.2zM15.607 4.2h5.88v1.46h-5.88V4.2z"/>
+                  <path d="M22 7h-7V5h7v2zm1.726 10c-.442 1.297-2.029 3-5.101 3-3.074 0-5.564-1.729-5.564-5.675 0-3.91 2.325-5.92 5.466-5.92 2.99 0 4.97 1.882 4.97 5.564 0 .467-.044.94-.044.94h-7.37c.15 2.04 1.775 2.698 3.376 2.698 1.627 0 2.467-.726 2.864-1.608h1.403zm-2.76-4.42c-.07-1.63-1.06-2.42-2.48-2.42-1.52 0-2.45.87-2.66 2.42h5.14zM8.85 19.5H1V4.5h7.2c2.61 0 4.1 1.38 4.1 3.54 0 1.47-.78 2.48-1.92 2.98 1.48.4 2.42 1.62 2.42 3.29 0 2.5-1.77 5.19-3.95 5.19zM7.55 8.1H4.4v3.3h2.9c1.18 0 2.05-.53 2.05-1.73 0-1.1-.72-1.57-1.8-1.57zm.25 5.5H4.4v3.6h3.5c1.22 0 2.01-.67 2.01-1.85 0-1.22-.9-1.75-2.11-1.75z"/>
                 </svg>
               </a>
             </div>

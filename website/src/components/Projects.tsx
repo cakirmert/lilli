@@ -35,15 +35,12 @@ function ProjectCard({
       }}
     >
       <div className="project-card-inner">
-        {project.images.map((img, i) => (
-          <img
-            key={i}
-            src={asset(img)}
-            alt={`${project.title} ${i + 1}`}
-            className="project-card-img"
-            onError={(e) => { (e.target as HTMLImageElement).style.display = 'none'; }}
-          />
-        ))}
+        <img
+          src={asset(project.images[0])}
+          alt={project.title}
+          className="project-card-img"
+          onError={(e) => { (e.target as HTMLImageElement).style.display = 'none'; }}
+        />
         <div className="card-overlay">
           <p className="card-overlay-title">{project.title}</p>
           <p className="card-overlay-cat">{project.category}</p>

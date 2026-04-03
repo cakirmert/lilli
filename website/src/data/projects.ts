@@ -20,7 +20,9 @@ export const projects: Project[] = [
     "images": [
       "/projects/bachelorproject-supernaturalis/01-cover.jpg",
       "/projects/bachelorproject-supernaturalis/02-spread.jpg",
-      "/projects/bachelorproject-supernaturalis/03-detail.jpg"
+      "/projects/bachelorproject-supernaturalis/03-detail.jpg",
+      "/projects/bachelorproject-supernaturalis/04-detail2.jpg",
+      "/projects/bachelorproject-supernaturalis/05-detail3.jpg"
     ]
   },
   {
@@ -41,7 +43,13 @@ export const projects: Project[] = [
     "category": "Design",
     "description": "A poster series exploring the imaginative connections between cloud formations and everyday objects, combining photography with typographic play.",
     "images": [
-      "/projects/cloud-associations/01-cover.jpg"
+      "/projects/cloud-associations/01-cover.jpg",
+      "/projects/cloud-associations/02-poster1.jpg",
+      "/projects/cloud-associations/03-poster2.jpg",
+      "/projects/cloud-associations/04-wide.jpg",
+      "/projects/cloud-associations/05-detail1.jpg",
+      "/projects/cloud-associations/06-detail2.jpg",
+      "/projects/cloud-associations/07-detail3.jpg"
     ]
   },
   {
@@ -53,7 +61,9 @@ export const projects: Project[] = [
     "images": [
       "/projects/event-branding-schraege-zaehne/01-cover.jpg",
       "/projects/event-branding-schraege-zaehne/02-poster.jpg",
-      "/projects/event-branding-schraege-zaehne/03-merch.jpg"
+      "/projects/event-branding-schraege-zaehne/03-merch.jpg",
+      "/projects/event-branding-schraege-zaehne/04-detail1.jpg",
+      "/projects/event-branding-schraege-zaehne/05-detail2.jpg"
     ]
   },
   {
@@ -75,7 +85,14 @@ export const projects: Project[] = [
     "category": "Design",
     "description": "A research project exploring the cultural significance of lucky charms and talismans across different traditions, documented through careful visual cataloguing and design.",
     "images": [
-      "/projects/luckycharm-research/02-detail.jpg"
+      "/projects/luckycharm-research/01-cover.jpg",
+      "/projects/luckycharm-research/02-detail.jpg",
+      "/projects/luckycharm-research/03-spread1.jpg",
+      "/projects/luckycharm-research/04-spread2.jpg",
+      "/projects/luckycharm-research/05-detail2.jpg",
+      "/projects/luckycharm-research/06-detail3.jpg",
+      "/projects/luckycharm-research/07-detail4.jpg",
+      "/projects/luckycharm-research/08-detail5.jpg"
     ]
   },
   {
@@ -97,7 +114,12 @@ export const projects: Project[] = [
     "images": [
       "/projects/screen-printing-portrait/01-cover.jpg",
       "/projects/screen-printing-portrait/02-booklet.jpg",
-      "/projects/screen-printing-portrait/03-portrait.jpg"
+      "/projects/screen-printing-portrait/03-portrait.jpg",
+      "/projects/screen-printing-portrait/04-detail2.jpg",
+      "/projects/screen-printing-portrait/05-detail3.jpg",
+      "/projects/screen-printing-portrait/06-detail4.jpg",
+      "/projects/screen-printing-portrait/07-detail5.jpg",
+      "/projects/screen-printing-portrait/08-detail6.jpg"
     ]
   },
   {

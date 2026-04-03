@@ -88,15 +88,13 @@ export default function Navigation() {
       style={{ opacity: 0 }}
     >
       <a href="#" onClick={(e) => handleClick(e, '#')} className="nav-logo">
-        <span className="nav-logo-text">Lilli Schr&ouml;der</span>
-        <span className="nav-logo-dot" />
+        <img src="/logo-handwritten.png" alt="Lilli Schröder" className="nav-logo-img" />
       </a>
 
       {/* Desktop links */}
       <div className="nav-links-desktop">
         {[
           { href: '#work', label: 'Work' },
-          { href: '#about', label: 'About' },
           { href: '#about', label: 'Contact' },
         ].map((item, i) => (
           <a
@@ -126,7 +124,6 @@ export default function Navigation() {
       {/* Mobile menu */}
       <div ref={menuRef} className="nav-mobile-menu" style={{ height: 0, opacity: 0, overflow: 'hidden' }}>
         <a href="#work" onClick={(e) => handleClick(e, '#work')} className="nav-mobile-link">Work</a>
-        <a href="#about" onClick={(e) => handleClick(e, '#about')} className="nav-mobile-link">About</a>
         <a href="#about" onClick={(e) => handleClick(e, '#about')} className="nav-mobile-link">Contact</a>
       </div>
     </nav>
