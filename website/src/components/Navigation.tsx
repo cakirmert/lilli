@@ -88,7 +88,19 @@ export default function Navigation() {
       style={{ opacity: 0 }}
     >
       <a href="#" onClick={(e) => handleClick(e, '#')} className="nav-logo">
-        <img src="/logo-handwritten.png" alt="Lilli Schröder" className="nav-logo-img" />
+        <span className="nav-logo-text">
+          <span className="nav-logo-l">L</span>
+          <span className="nav-logo-illi">illi</span>
+          <svg className="nav-logo-smiley" viewBox="0 0 100 92" fill="currentColor" aria-hidden="true">
+            <rect x="10" y="0" width="6" height="16" rx="3"/>
+            <rect x="30" y="0" width="6" height="16" rx="3"/>
+            <rect x="50" y="0" width="6" height="16" rx="3"/>
+            <circle cx="18" cy="34" r="7"/>
+            <circle cx="48" cy="34" r="7"/>
+            <path d="M4 56 C4 88, 62 88, 62 56" stroke="currentColor" strokeWidth="12" strokeLinecap="round" fill="none"/>
+          </svg>
+          {' Schr\u00F6der'}
+        </span>
       </a>
 
       {/* Desktop links */}
