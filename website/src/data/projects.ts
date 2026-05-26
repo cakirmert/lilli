@@ -27,17 +27,6 @@ export const projects: Project[] = [
   },
   {
     "id": 2,
-    "slug": "bionade-litschi",
-    "title": "Bionade Litschi",
-    "category": "Illustration",
-    "description": "Label and packaging illustration for Bionade Litschi. The design features lush botanical motifs and playful typography, bringing the product identity to life through vibrant, hand-drawn elements.",
-    "images": [
-      "/projects/bionade-litschi/01-halsetikett.png",
-      "/projects/bionade-litschi/02-bauchetikett.png"
-    ]
-  },
-  {
-    "id": 3,
     "slug": "cloud-associations",
     "title": "Poster Series »Cloud Associations«",
     "category": "Design",
@@ -53,7 +42,7 @@ export const projects: Project[] = [
     ]
   },
   {
-    "id": 4,
+    "id": 3,
     "slug": "event-branding-schraege-zaehne",
     "title": "Event Branding »Schräge Zähne«",
     "category": "Design",
@@ -67,7 +56,7 @@ export const projects: Project[] = [
     ]
   },
   {
-    "id": 5,
+    "id": 4,
     "slug": "illustrations",
     "title": "Illustrations",
     "category": "Illustration",
@@ -79,7 +68,7 @@ export const projects: Project[] = [
     ]
   },
   {
-    "id": 6,
+    "id": 5,
     "slug": "luckycharm-research",
     "title": "Luckycharm Research Project",
     "category": "Design",
@@ -96,7 +85,7 @@ export const projects: Project[] = [
     ]
   },
   {
-    "id": 7,
+    "id": 6,
     "slug": "poster-for-exhibition",
     "title": "Poster for Exhibition",
     "category": "Illustration",
@@ -106,7 +95,7 @@ export const projects: Project[] = [
     ]
   },
   {
-    "id": 8,
+    "id": 7,
     "slug": "screen-printing-portrait",
     "title": "Screen Printing Portrait",
     "category": "Design",
@@ -123,7 +112,7 @@ export const projects: Project[] = [
     ]
   },
   {
-    "id": 9,
+    "id": 8,
     "slug": "typeface-limbda",
     "title": "Typeface Design »Limbda«",
     "category": "Design",
@@ -134,7 +123,7 @@ export const projects: Project[] = [
     ]
   },
   {
-    "id": 10,
+    "id": 9,
     "slug": "weihnachtskarte",
     "title": "Weihnachtskarte",
     "category": "Illustration",

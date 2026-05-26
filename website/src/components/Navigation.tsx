@@ -53,8 +53,8 @@ export default function Navigation() {
     const x = e.clientX - rect.left - rect.width / 2;
     const y = e.clientY - rect.top - rect.height / 2;
     gsap.to(link, {
-      x: x * 0.3,
-      y: y * 0.3,
+      x: x * 0.14,
+      y: y * 0.14,
       duration: 0.3,
       ease: 'power2.out',
     });
@@ -64,8 +64,8 @@ export default function Navigation() {
     gsap.to(e.currentTarget, {
       x: 0,
       y: 0,
-      duration: 0.5,
-      ease: 'elastic.out(1, 0.4)',
+      duration: 0.3,
+      ease: 'power2.out',
     });
   }, []);
 
@@ -74,6 +74,10 @@ export default function Navigation() {
     setMenuOpen(false);
     if (href === '#') {
       window.scrollTo({ top: 0, behavior: 'smooth' });
+      return;
+    }
+    if (href === '#work') {
+      window.dispatchEvent(new CustomEvent('portfolio:reset-work-gallery'));
       return;
     }
     const target = document.querySelector(href);
@@ -97,7 +101,7 @@ export default function Navigation() {
       <div className="nav-links-desktop">
         {[
           { href: '#work', label: 'Work' },
-          { href: '#about', label: 'Contact' },
+          { href: '#contact', label: 'Contact' },
         ].map((item, i) => (
           <a
             key={item.label}
@@ -126,7 +130,7 @@ export default function Navigation() {
       {/* Mobile menu */}
       <div ref={menuRef} className="nav-mobile-menu" style={{ height: 0, opacity: 0, overflow: 'hidden' }}>
         <a href="#work" onClick={(e) => handleClick(e, '#work')} className="nav-mobile-link">Work</a>
-        <a href="#about" onClick={(e) => handleClick(e, '#about')} className="nav-mobile-link">Contact</a>
+        <a href="#contact" onClick={(e) => handleClick(e, '#contact')} className="nav-mobile-link">Contact</a>
       </div>
     </nav>
   );

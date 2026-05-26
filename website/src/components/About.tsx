@@ -1,37 +1,17 @@
 'use client';
 
-import { useEffect, useRef } from 'react';
-import gsap from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { asset } from '@/lib/basePath';
 
-gsap.registerPlugin(ScrollTrigger);
-
 export default function About() {
-  const sectionRef = useRef<HTMLElement>(null);
-  const contentRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    if (contentRef.current) {
-      gsap.fromTo(contentRef.current,
-        { opacity: 0, y: 40 },
-        {
-          opacity: 1, y: 0, duration: 0.8, ease: 'power3.out',
-          scrollTrigger: { trigger: contentRef.current, start: 'top 80%' }
-        }
-      );
-    }
-  }, []);
-
   return (
-    <section id="about" ref={sectionRef} className="about-section">
-      <div ref={contentRef} className="about-content" style={{ opacity: 0 }}>
+    <section id="contact" className="about-section">
+      <div className="about-content">
         <div className="about-photo-wrap">
           <div className="about-photo">
             <img
               src={asset('/lilli-portrait.png')}
               alt="Lilli Schröder"
-              style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+              style={{ width: '100%', height: 'auto', objectFit: 'contain' }}
               onError={(e) => { (e.target as HTMLImageElement).style.display = 'none'; }}
             />
           </div>

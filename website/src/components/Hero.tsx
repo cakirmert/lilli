@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useRef, useCallback } from 'react';
+import { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { SplitText } from 'gsap/SplitText';
@@ -12,11 +12,7 @@ export default function Hero() {
   const sectionRef = useRef<HTMLElement>(null);
   const greetingRef = useRef<HTMLHeadingElement>(null);
   const introRef = useRef<HTMLParagraphElement>(null);
-  const ctaRef = useRef<HTMLDivElement>(null);
   const illustrationRef = useRef<HTMLDivElement>(null);
-  const arrowPathRef = useRef<SVGPathElement>(null);
-  const arrowHeadRef = useRef<SVGPathElement>(null);
-  const arrowSvgRef = useRef<SVGSVGElement>(null);
 
   useEffect(() => {
     let tl: gsap.core.Timeline;
@@ -62,30 +58,6 @@ export default function Hero() {
         );
       }
 
-      // 4. Subtitle — fade up
-      if (ctaRef.current) {
-        ctaRef.current.style.visibility = 'visible';
-        tl.from(ctaRef.current, {
-          y: 12,
-          opacity: 0,
-          duration: 0.8,
-          ease: 'power2.out',
-        }, '-=0.6');
-      }
-
-      // 5. Arrow draw-on
-      if (arrowPathRef.current) {
-        const path = arrowPathRef.current;
-        const length = path.getTotalLength();
-        gsap.set(path, { strokeDasharray: length, strokeDashoffset: length });
-        tl.to(path, { strokeDashoffset: 0, duration: 1.5, ease: 'power2.inOut' }, '-=0.4');
-      }
-
-      if (arrowHeadRef.current) {
-        gsap.set(arrowHeadRef.current, { opacity: 0 });
-        tl.to(arrowHeadRef.current, { opacity: 1, duration: 0.3 }, '-=0.1');
-      }
-
       // ScrollTrigger: parallax on illustration
       if (illustrationRef.current) {
         st = ScrollTrigger.create({
@@ -103,7 +75,7 @@ export default function Hero() {
       if (tl) tl.kill();
       if (st) st.kill();
       // Reset inline styles on cleanup so re-run works
-      [greetingRef, introRef, ctaRef, illustrationRef].forEach(ref => {
+      [greetingRef, introRef, illustrationRef].forEach(ref => {
         if (ref.current) {
           ref.current.style.visibility = 'hidden';
           ref.current.style.transform = '';
@@ -112,30 +84,6 @@ export default function Hero() {
       });
     };
   }, []);
-
-  const wiggleArrow = useCallback(() => {
-    if (!arrowSvgRef.current) return;
-    gsap.killTweensOf(arrowSvgRef.current);
-    gsap.to(arrowSvgRef.current, {
-      rotation: 8,
-      scale: 1.1,
-      duration: 0.15,
-      ease: 'power2.out',
-      yoyo: true,
-      repeat: 3,
-      onComplete: () => {
-        gsap.to(arrowSvgRef.current, { rotation: 0, scale: 1, duration: 0.2, ease: 'power2.out' });
-      },
-    });
-  }, []);
-
-  const scrollTo = (e: React.MouseEvent, selector: string) => {
-    e.preventDefault();
-    const target = document.querySelector(selector);
-    if (target) {
-      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }
-  };
 
   return (
     <section ref={sectionRef} className="hero-section">
@@ -147,45 +95,6 @@ export default function Hero() {
           <p ref={introRef} className="hero-intro" style={{ visibility: 'hidden' }}>
             I&apos;m Lilli and passionate about visual storytelling and vibrant illustrations.
           </p>
-          <div ref={ctaRef} className="hero-cta-wrap" style={{ visibility: 'hidden' }}>
-            <p className="hero-subtitle">
-              Let&apos;s{' '}
-              <a
-                href="#work"
-                className="hero-inline-link"
-                onClick={(e) => scrollTo(e, '#work')}
-                onMouseEnter={wiggleArrow}
-              >
-                see some of my work
-              </a>.
-            </p>
-            <svg
-              ref={arrowSvgRef}
-              className="hero-loop-arrow"
-              viewBox="0 0 120 140"
-              fill="none"
-              aria-hidden="true"
-            >
-              <path
-                ref={arrowPathRef}
-                d="M10 5 C5 20, 2 45, 20 60 C38 75, 58 70, 60 52 C62 34, 45 22, 30 32 C15 42, 12 65, 30 90 C42 107, 58 120, 80 130"
-                stroke="var(--color-blue)"
-                strokeWidth="2.5"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                fill="none"
-              />
-              <path
-                ref={arrowHeadRef}
-                d="M74 124 L82 132 L72 130"
-                stroke="var(--color-blue)"
-                strokeWidth="2.5"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                fill="none"
-              />
-            </svg>
-          </div>
         </div>
         <div ref={illustrationRef} className="hero-illustration" style={{ visibility: 'hidden' }}>
           <img
