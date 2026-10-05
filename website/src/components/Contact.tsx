@@ -1,5 +1,3 @@
-'use client';
-
 import { asset } from '@/lib/basePath';
 
 export default function Contact() {

@@ -4,7 +4,7 @@ import { asset } from '@/lib/basePath';
 
 export default function Impressum() {
   return (
-    <div className="legal-page">
+    <div className="legal-page" lang="de">
       <nav className="legal-nav">
         <a href={asset('/')} className="nav-logo">Lilli Schr&ouml;der</a>
       </nav>

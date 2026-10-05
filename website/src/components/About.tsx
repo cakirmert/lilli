@@ -1,30 +1,40 @@
-'use client';
-
+import Image from 'next/image';
 import { asset } from '@/lib/basePath';
 
 export default function About() {
   return (
-    <section id="contact" className="about-section">
+    <section id="contact" className="about-section" aria-labelledby="about-heading">
       <div className="about-content">
         <div className="about-photo-wrap">
           <div className="about-photo">
-            <img
-              src={asset('/lilli-portrait.png')}
+            <Image
+              src={asset('/illustrations/lilli-portrait.webp')}
               alt="Lilli Schröder"
-              style={{ width: '100%', height: 'auto', objectFit: 'contain' }}
-              onError={(e) => { (e.target as HTMLImageElement).style.display = 'none'; }}
+              width={1278}
+              height={1600}
+              sizes="(max-width: 799px) 60vw, 27vw"
             />
           </div>
         </div>
         <div className="about-text">
-          <h2 className="about-heading">
-            Graphic designer and illustrator based in Hamburg with a passion for analogue techniques and visual storytelling.
+          <h2 id="about-heading" className="about-heading">
+            Lilli is a graphic designer and illustrator from Hamburg,<br className="about-heading-break" />
+            {' '}with a documented obsession with RGB blue and 80s pop.
           </h2>
+          <div className="about-bio">
+            <p>
+              Her work grows from an intuitive, experimental process that welcomes chance and imperfection – because sometimes the best ideas are the ones you didn’t plan.<br />
+              In her illustrations, she approaches the world with curiosity and care, turning personal and socially relevant themes into playful, empathetic visuals.
+            </p>
+            <p>
+              Off-screen, she’s usually freestyle dancing in her room or standing at the harbour, watching ships like other people watch series – both perfect practice for composing scenes that feel alive.
+            </p>
+          </div>
           <div className="about-contact">
-            <h3 className="about-say-hi">Let&apos;s work together</h3>
-            <a href="mailto:hello@lilli-schroeder.de" className="about-email">
-              hello@lilli-schroeder.de
-            </a>
+            <div className="about-contact-line">
+              <h3 className="about-say-hi">Say hi!</h3>
+              <a href="mailto:hello@lilli-schroeder.de" className="about-email">hello@lilli-schroeder.de</a>
+            </div>
             <div className="about-socials">
               <a href="https://www.linkedin.com/in/lilli-sophie-schr%C3%B6der-54a0ba223" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
                 <svg viewBox="0 0 24 24" width="28" height="28" fill="currentColor">
@@ -43,6 +53,9 @@ export default function About() {
               </a>
             </div>
           </div>
+        </div>
+        <div className="about-arrow" aria-hidden="true">
+          <Image src={asset('/illustrations/contact-arrow.svg')} alt="" width={153} height={146} />
         </div>
       </div>
     </section>
