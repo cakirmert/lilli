@@ -1,9 +1,6 @@
 import type { Metadata, Viewport } from 'next';
+import { asset } from '@/lib/basePath';
 import './globals.css';
-
-const basePath = process.env.NODE_ENV === 'production'
-  ? `/${process.env.REPO_NAME || 'lilli'}`
-  : '';
 
 export const viewport: Viewport = {
   colorScheme: 'only light',
@@ -15,7 +12,7 @@ export const metadata: Metadata = {
     'Lilli Schröder is a graphic designer and illustrator based in Hamburg. Passionate about visual storytelling and vibrant illustrations.',
   keywords: ['graphic designer', 'illustrator', 'Hamburg', 'illustration', 'design', 'visual storytelling'],
   icons: {
-    icon: `${basePath}/hero-illustration.svg`,
+    icon: asset('/hero-illustration.svg'),
   },
   openGraph: {
     title: 'Lilli Schröder — Graphic Designer & Illustrator',

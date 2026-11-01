@@ -23,7 +23,7 @@ export default function Datenschutz() {
         <p>
           <strong>Wer ist verantwortlich f&uuml;r die Datenerfassung auf dieser Website?</strong><br />
           Die Datenverarbeitung auf dieser Website erfolgt durch den Websitebetreiber: Lilli Schr&ouml;der,
-          Hamburg, Deutschland. E-Mail: hello@lilli-schroeder.de
+          Hamburg, Deutschland. E-Mail: hello@lillischroeder.com
         </p>
 
         <h2>2. Hosting</h2>
@@ -45,7 +45,7 @@ export default function Datenschutz() {
         <p>
           Lilli Schr&ouml;der<br />
           Hamburg, Deutschland<br />
-          E-Mail: hello@lilli-schroeder.de
+          E-Mail: hello@lillischroeder.com
         </p>
 
         <h2>4. Datenerfassung auf dieser Website</h2>

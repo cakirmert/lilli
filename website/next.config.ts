@@ -1,14 +1,14 @@
 import type { NextConfig } from "next";
 
 const isProd = process.env.NODE_ENV === 'production';
-const repoName = process.env.REPO_NAME || 'lilli';
+const basePath = isProd ? (process.env.NEXT_PUBLIC_BASE_PATH ?? '/lilli') : '';
 
 const nextConfig: NextConfig = {
   reactStrictMode: false,
   reactCompiler: true,
   output: 'export',
-  basePath: isProd ? `/${repoName}` : '',
-  assetPrefix: isProd ? `/${repoName}/` : '',
+  basePath,
+  assetPrefix: basePath ? `${basePath}/` : '',
   images: {
     unoptimized: true,
   },

@@ -20,7 +20,7 @@ export default function Impressum() {
 
         <h2>Kontakt</h2>
         <p>
-          E-Mail: hello@lilli-schroeder.de
+          E-Mail: hello@lillischroeder.com
         </p>
 
         <h2>Redaktionell verantwortlich</h2>

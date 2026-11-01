@@ -1,5 +1,5 @@
 const basePath = process.env.NODE_ENV === 'production'
-  ? `/${process.env.NEXT_PUBLIC_REPO_NAME || 'lilli'}`
+  ? (process.env.NEXT_PUBLIC_BASE_PATH ?? '/lilli')
   : '';
 
 export function asset(path: string) {

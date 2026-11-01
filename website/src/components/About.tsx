@@ -33,7 +33,7 @@ export default function About() {
           <div className="about-contact">
             <div className="about-contact-line">
               <h3 className="about-say-hi">Say hi!</h3>
-              <a href="mailto:hello@lilli-schroeder.de" className="about-email">hello@lilli-schroeder.de</a>
+              <a href="mailto:hello@lillischroeder.com" className="about-email">hello@lillischroeder.com</a>
             </div>
             <div className="about-socials">
               <a href="https://www.linkedin.com/in/lilli-sophie-schr%C3%B6der-54a0ba223" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
