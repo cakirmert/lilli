@@ -1,9 +1,13 @@
-import type { Metadata } from 'next';
+import type { Metadata, Viewport } from 'next';
 import './globals.css';
 
 const basePath = process.env.NODE_ENV === 'production'
   ? `/${process.env.REPO_NAME || 'lilli'}`
   : '';
+
+export const viewport: Viewport = {
+  colorScheme: 'only light',
+};
 
 export const metadata: Metadata = {
   title: 'Lilli Schröder — Graphic Designer & Illustrator',

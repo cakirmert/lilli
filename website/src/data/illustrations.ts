@@ -26,7 +26,7 @@ export interface IllustrationProject {
   animatedSrc?: string;
 }
 
-export const gallerySize = { width: 3615, height: 1080 };
+export const gallerySize = { width: 3222, height: 1080 };
 
 export const illustrations: IllustrationProject[] = [
   {
@@ -359,29 +359,6 @@ export const illustrations: IllustrationProject[] = [
         "y": 0,
         "width": 491.6387023925781,
         "height": 614.4993896484375
-      }
-    ]
-  },
-  {
-    "id": "2:58",
-    "slug": "sketchbook",
-    "title": "Sketchbook",
-    "x": 2988.788818359375,
-    "y": 629.62353515625,
-    "width": 276.3365783691406,
-    "height": 319.70849609375,
-    "layers": [
-      {
-        "nodeId": "2:58",
-        "crop": [0.7531045079231262,-0.010584513656795025,0.016327716410160065,0.653480052947998,0.009867139160633087,0.16064155101776123],
-        "src": "/illustrations/sketchbook-1.webp",
-        "imageWidth": 1500,
-        "imageHeight": 2000,
-        "fit": "fill",
-        "x": 0,
-        "y": 0,
-        "width": 276.3365783691406,
-        "height": 319.70849609375
       }
     ]
   }

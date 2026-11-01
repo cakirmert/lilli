@@ -35,6 +35,7 @@ export default function Navigation() {
         }}>
         <Image src={asset('/illustrations/logo-name.webp')} alt="Lilli Schröder" width={951} height={120} className="nav-logo-default" priority />
         <Image src={asset('/illustrations/logo-smile.webp')} alt="" width={951} height={144} className="nav-logo-hover" aria-hidden="true" />
+        <span className="nav-logo-mobile" aria-hidden="true">Lilli Schröder</span>
       </a>
       <a className="nav-link" href="#contact">About &amp; Contact</a>
     </nav>
