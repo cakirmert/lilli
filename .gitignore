@@ -1,3 +1,27 @@
+# Dependencies and generated output
+/node_modules/
+/.next/
+/out/
+/build/
+/coverage/
+*.tsbuildinfo
+next-env.d.ts
+
+# Local environment and hosting settings
+.env*
+!.env.example
+.vercel/
+*.pem
+
+# Editor, operating system, and debug files
+.DS_Store
+Thumbs.db
+*.log
+.idea/
+.vscode/
+
+# Local assistant settings and installed skills
+.claude/
+.agent/
+.agents/
 skills-lock.json
-.agent/*
-.agents/*
