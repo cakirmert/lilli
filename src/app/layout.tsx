@@ -1,5 +1,4 @@
 import type { Metadata, Viewport } from 'next';
-import { asset } from '@/lib/basePath';
 import './globals.css';
 
 export const viewport: Viewport = {
@@ -11,9 +10,6 @@ export const metadata: Metadata = {
   description:
     'Lilli Schröder is a graphic designer and illustrator based in Hamburg. Passionate about visual storytelling and vibrant illustrations.',
   keywords: ['graphic designer', 'illustrator', 'Hamburg', 'illustration', 'design', 'visual storytelling'],
-  icons: {
-    icon: asset('/hero-illustration.svg'),
-  },
   openGraph: {
     title: 'Lilli Schröder — Graphic Designer & Illustrator',
     description: 'Graphic designer and illustrator based in Hamburg.',
